@@ -428,6 +428,8 @@ public class WCServletAdaptor
                     }
                 }
             }
+            
+            refreshSubsystemUpdaters();
         }
     }
 
@@ -462,6 +464,10 @@ public class WCServletAdaptor
      */
     private void downloadUpdateIfNecessary( SubsystemUpdater updater )
     {
+        if ( !updateDir.exists() )
+        {
+            updateDir.mkdirs();
+        }
         String msg = updater.downloadUpdateIfNecessary( updateDir );
         if ( msg != null )
         {
@@ -567,6 +573,26 @@ public class WCServletAdaptor
             }
         }
         return updater;
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Refresh the subsystems collection so that it reflects the new
+     * updates (intended to be called after downloading/applying pending
+     * updates).
+     */
+    private void refreshSubsystemUpdaters()
+    {
+        Map oldSubsystems = subsystems;
+        subsystems = new HashMap();
+        for ( Iterator i = oldSubsystems.keySet().iterator(); i.hasNext(); )
+        {
+            File dir = (File)i.next();
+            // TODO: read delete param from current updater 
+            getUpdaterFor( dir, true );
+        }
+        oldSubsystems.clear();
     }
 
 
