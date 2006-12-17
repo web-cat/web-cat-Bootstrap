@@ -98,6 +98,17 @@ public class WCServletContext
 
 
     // ----------------------------------------------------------
+    /**
+     * Set the internal value used for the WOClasspath init parameter.
+     * @param newClasspath the new value to use for WOClasspath
+     */
+    public void setWOClasspath( String newClasspath )
+    {
+        woClasspath = newClasspath;
+    }
+
+
+    // ----------------------------------------------------------
 //    /**
 //     * Splice the subsystem class path specified in the constructor into
 //     * a WOClasspath-style value.  Searches the initial classpath value
