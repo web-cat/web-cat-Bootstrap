@@ -673,7 +673,10 @@ public class WCServletAdaptor
         for ( int i = 0; i < subdirs.length; i++ )
         {
             File subdir = subdirs[i];
-            if ( installedWOFrameworkDir != null )
+            // Be sure to use the *local* version of JavaWOExtensions (from
+            // project WONDER) rather than the default system version.
+            if ( installedWOFrameworkDir != null
+                 && !"JavaWOExtensions.framework".equals( subdir.getName() ) )
             {
                 File localSubdir =
                     new File( installedWOFrameworkDir, subdir.getName() );
