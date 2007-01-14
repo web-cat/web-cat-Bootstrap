@@ -75,6 +75,7 @@ public class FeatureDescriptor
 
     public static final String PLUGIN_NAME_PREFIX    = "plugin.";
     public static final String SUBSYSTEM_NAME_PREFIX = "subsystem.";
+    public static final String RENAME_SUFFIX = ".renameTo";
 
 
     //~ Public Methods ........................................................
