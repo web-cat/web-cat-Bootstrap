@@ -245,6 +245,7 @@ public class WCServletContext
     /* (non-Javadoc)
      * @see javax.servlet.ServletContext#getServlet(java.lang.String)
      */
+    @Deprecated
     public Servlet getServlet( String arg0 )
         throws ServletException
     {
@@ -256,6 +257,7 @@ public class WCServletContext
     /* (non-Javadoc)
      * @see javax.servlet.ServletContext#getServlets()
      */
+    @Deprecated
     public Enumeration getServlets()
     {
         return innerContext.getServlets();
@@ -266,6 +268,7 @@ public class WCServletContext
     /* (non-Javadoc)
      * @see javax.servlet.ServletContext#getServletNames()
      */
+    @Deprecated
     public Enumeration getServletNames()
     {
         return innerContext.getServletNames();
@@ -286,6 +289,7 @@ public class WCServletContext
     /* (non-Javadoc)
      * @see javax.servlet.ServletContext#log(java.lang.Exception, java.lang.String)
      */
+    @Deprecated
     public void log( Exception arg0, String arg1 )
     {
         innerContext.log( arg0, arg1 );
