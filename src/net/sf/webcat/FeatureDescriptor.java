@@ -336,7 +336,7 @@ public class FeatureDescriptor
             }
             catch ( IOException e )
             {
-                logError( "Error attempting to download " + update + ":", e );
+                logError( "unable to download " + update + ":", e );
             }
         }
         return null;
@@ -397,7 +397,7 @@ public class FeatureDescriptor
         }
         catch ( NumberFormatException e )
         {
-            logError( "Error: Non-numeric property " + propName
+            logError( "Non-numeric property " + propName
                 + " for feature " + name );
         }
         return val;
@@ -428,7 +428,13 @@ public class FeatureDescriptor
      */
     protected void logError( String msg )
     {
-        System.out.println( "Error:" + msg );
+        String className = getClass().getName();
+        int pos = className.lastIndexOf( '.' );
+        if ( pos >= 0 )
+        {
+            className = className.substring( pos + 1 );
+        }
+        System.out.println( className + ": ERROR: " + msg );
     }
 
 
@@ -443,8 +449,8 @@ public class FeatureDescriptor
      */
     protected void logError( String msg, Throwable exception )
     {
-        System.out.println( "Error:" + msg );
-        System.out.println( exception.getMessage() );
+        logError( msg );
+        System.out.println( exception );
     }
 
 

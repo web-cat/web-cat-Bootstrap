@@ -85,9 +85,10 @@ public class FeatureProvider
                 }
                 catch ( IOException e )
                 {
-                    System.out.println( "Error: exception while reading "
-                        + "from subsystem provider at " + realURL );
-                    System.out.println( e.getMessage() );
+                    System.out.println( "FeatureProvider: ERROR: exception "
+                        + "reading from provider at "
+                        + realURL );
+                    System.out.println( e );
                 }
                 if ( provider != null )
                 {
@@ -230,9 +231,9 @@ public class FeatureProvider
         }
         catch ( IOException e )
         {
-            System.out.println( "Error: exception while reading "
-                + "from feature provider at " + url );
-            System.out.println( e.getMessage() );
+            System.out.println( "FeatureProvider: ERROR: exception "
+                + "reading from provider at " + url );
+            System.out.println( e );
         }
     }
 
@@ -252,9 +253,9 @@ public class FeatureProvider
         }
         catch ( IOException e )
         {
-            System.out.println( "Error: exception while reading "
-                + "from subsystem provider at " + url );
-            System.out.println( e.getMessage() );
+            System.out.println( "FeatureProvider: ERROR: exception "
+                + "reading from provider at " + url );
+            System.out.println( e );
         }
         name = properties.getProperty( "provider.name", url.toString() );
         for ( Enumeration e = properties.keys(); e.hasMoreElements(); )
@@ -347,8 +348,8 @@ public class FeatureProvider
             }
             catch ( java.net.MalformedURLException e)
             {
-                System.out.println( "Error: Malformed feature provider URL: "
-                    + updateUrl );
+                System.out.println( "FeatureProvider: ERROR: Malformed "
+                    + "feature provider URL: " + updateUrl );
             }
         }
         return result;
