@@ -813,5 +813,5 @@ public class WCServletAdaptor
     private static final String UPDATE_SUBDIR    = "pending-updates";
     private static final String APP_JAR_PREFIX   = "webcat";
     private static final String INSTALLED_WOROOT = "installed.woroot";
-    private static final String VERSION          = "1.3";
+    private static final String VERSION          = "1.4";
 }
