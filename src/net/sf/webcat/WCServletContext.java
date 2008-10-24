@@ -381,7 +381,13 @@ public class WCServletContext
     }
 
 
-    //~ Instance/static variables .............................................
+    // ----------------------------------------------------------
+	public String getContextPath() {
+		return innerContext.getContextPath();
+	}
+
+
+	//~ Instance/static variables .............................................
 
     private ServletContext innerContext;
     private String         woClasspath        = null;
