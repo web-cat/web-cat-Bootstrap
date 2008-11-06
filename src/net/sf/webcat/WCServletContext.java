@@ -22,6 +22,7 @@
 package net.sf.webcat;
 
 import java.io.*;
+import java.lang.reflect.*;
 import java.net.*;
 import java.util.*;
 import javax.servlet.*;
@@ -382,15 +383,45 @@ public class WCServletContext
 
 
     // ----------------------------------------------------------
-	public String getContextPath() {
-		return innerContext.getContextPath();
+	public String getContextPath()
+    {
+        if (getContextPath == null)
+        {
+            try
+            {
+                getContextPath = innerContext.getClass()
+                    .getMethod("getContextPath", (Class<?>[])null);
+            }
+            catch (NoSuchMethodException e)
+            {
+                throw new RuntimeException(e);
+            }
+        }
+        String result = null;
+        if (getContextPath != null)
+        {
+            try
+            {
+                result = (String)getContextPath.invoke(null);
+            }
+            catch (IllegalAccessException e)
+            {
+                throw new RuntimeException(e);
+            }
+            catch (java.lang.reflect.InvocationTargetException e)
+            {
+                throw new RuntimeException(e);
+            }
+        }
+        return result;
 	}
 
 
 	//~ Instance/static variables .............................................
 
     private ServletContext innerContext;
-    private String         woClasspath        = null;
+    private String         woClasspath = null;
+    private Method         getContextPath;
 
 //    private static final String RESOURCES_JAVA_SUBDIR
 //        = "[/\\\\]Resources[/\\\\]Java([/\\\\]?)$";
