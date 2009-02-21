@@ -252,17 +252,28 @@ public class WCServletAdaptor
         out.println( "examine it to identify the exception stack trace.</p>" );
         out.println( "<p>For assistance, send the stdout log file to " );
         out.println( "the Web-CAT project team at " );
-        out.println( "<a href=\"mailto:webcat@vt.edu\">webcat@vt.edu</a>.</p>" );
-        out.println( "<pre>" );
-        initFailed.printStackTrace( out );
-        Throwable nested = initFailed.getCause();
-        while ( nested != null )
+        out.println( "<a href=\"mailto:webcat@vt.edu\">webcat@vt.edu</a>.</p>");
+        Throwable nested = initFailed;
+        while (nested.getCause() != null)
         {
-            out.println( "\nCaused by:" );
-            nested.printStackTrace( out );
-            nested = nested.getCause();
+        	nested = nested.getCause();
         }
+        out.println( "<h2>Root Cause</h2>\n<pre>" );
+        nested.printStackTrace( out );
         out.println( "</pre>" );
+        if (nested != initFailed)
+        {
+        	out.println( "<h2>Full Exception Details</h2>\n<pre>" );
+        	initFailed.printStackTrace( out );
+        	nested = initFailed.getCause();
+        	while ( nested != null )
+        	{
+        		out.println( "\nCaused by:" );
+        		nested.printStackTrace( out );
+        		nested = nested.getCause();
+        	}
+        	out.println( "</pre>" );
+        }
         out.println( "</body></html>" );
         out.flush();
         out.close();
