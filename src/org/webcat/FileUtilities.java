@@ -19,7 +19,7 @@
  |  along with Web-CAT; if not, see <http://www.gnu.org/licenses/>.
 \*==========================================================================*/
 
-package net.sf.webcat;
+package org.webcat;
 
 import java.io.*;
 import java.util.*;
@@ -56,7 +56,7 @@ public class FileUtilities
     /**
      * Unzips the zipfile in the output directory.  This method is
      * provided purely for use by the Bootstrap code.  All other code
-     * should use the net.sf.webcat.archives.ArchiveManager
+     * should use the org.webcat.archives.ArchiveManager
      * class instead.
      *
      * @param zipFile the zip file
