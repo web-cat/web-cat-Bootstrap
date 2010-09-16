@@ -19,7 +19,7 @@
  |  along with Web-CAT; if not, see <http://www.gnu.org/licenses/>.
 \*==========================================================================*/
 
-package org.webcat;
+package net.sf.webcat;
 
 import java.io.*;
 import java.lang.reflect.*;
