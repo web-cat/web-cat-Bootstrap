@@ -23,7 +23,6 @@ package net.sf.webcat;
 
 import java.io.*;
 import java.net.URL;
-import java.net.MalformedURLException;
 import java.util.*;
 
 // -------------------------------------------------------------------------
@@ -34,7 +33,8 @@ import java.util.*;
  *  web.
  *
  *  @author  stedwar2
- *  @version $Id$
+ *  @author  Last changed by $Author$
+ *  @version $Revision$, $Date$
  */
 public class FeatureDescriptor
 {

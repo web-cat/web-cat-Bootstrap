@@ -32,7 +32,8 @@ import java.util.Properties;
  *  available from its provider.
  *
  *  @author  stedwar2
- *  @version $Id$
+ *  @author  Last changed by $Author$
+ *  @version $Revision$, $Date$
  */
 public class SubsystemUpdater
     extends FeatureDescriptor
@@ -141,7 +142,7 @@ public class SubsystemUpdater
                            e );
             }
         }
-        for ( Enumeration e = properties.keys(); e.hasMoreElements(); )
+        for ( Enumeration<?> e = properties.keys(); e.hasMoreElements(); )
         {
             String key = (String)e.nextElement();
             if ( key.startsWith( SUBSYSTEM_NAME_PREFIX ) )
