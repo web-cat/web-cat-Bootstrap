@@ -45,18 +45,10 @@ public class SubsystemUpdater
      * Creates a new object.
      * @param root the subdirectory for this subsystem
      */
-    public SubsystemUpdater( File root /*, boolean deleteBeforeUpdate */ )
+    public SubsystemUpdater( File root )
     {
-        /*
-        * @param deleteBeforeUpdate true if the contents of this subsystem
-        *     should be completely deleted before unpacking a new version
-        *     during the update process;  if false, the new update will be
-        *     unpacked over top of the existing version without deleting the
-        *     old files first.
-        */
         this.root = root;
         this.isPlugin = false;
-        // this.deleteBeforeUpdate = deleteBeforeUpdate;
         loadPropertiesIfPossible();
     }
 
@@ -65,9 +57,8 @@ public class SubsystemUpdater
 
     public static final String[] JAVA_ARCHIVE_EXTENSIONS = { ".jar", ".zip" };
 
-
     //~ Public Methods ........................................................
-
+    
     // ----------------------------------------------------------
     /**
      * Add all of this subsystem's jars to a buffer that will be used to
@@ -136,7 +127,7 @@ public class SubsystemUpdater
             {
                 // We're not using log4j, since that may be within a
                 // subsystem that needs updating
-                logError( "Error loading properties from "
+            	WCUpdater.logError( getClass(), "Error loading properties from "
                            + propertiesFile.getAbsolutePath()
                            + ":",
                            e );
@@ -151,7 +142,6 @@ public class SubsystemUpdater
             }
         }
     }
-
 
     //~ Instance/static variables .............................................
 
